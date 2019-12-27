@@ -25,7 +25,7 @@ enum class Category {
 inline std::string get_category_color(Category category) {
     switch (category) {
         case Category::A: {
-            return "\x1b[1;48;5;202m";
+            return "\x1b[1;37;48;5;202m";
         }
         case Category::B: {
             return "\x1b[1;37;48;5;160m";
