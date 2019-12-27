@@ -1,6 +1,7 @@
 #pragma once
 #include "board.hpp"
 #include "location.hpp"
+#include "output-config.hpp"
 #include "piece-transformations.hpp"
 #include "transformed-shape.hpp"
 #include <cstddef>
@@ -38,6 +39,9 @@ class Solver {
     const Pieces* m_pieces = nullptr;
     Pieces::const_iterator m_it = m_pieces->begin();
 
+    std::size_t m_depth = 0;
+    std::size_t m_shape_index = 0;
+
     const PieceTransformations& piece() const {
         return *m_it;
     }
@@ -45,10 +49,16 @@ class Solver {
     void place_next() {
         if (m_it == m_pieces->end()) {
             m_solved.push_back(m_board);
+            if constexpr (config_show_progress) {
+                std::cerr << "Solutions: " << m_solved.size() << "\n";
+            }
             return;
         }
         for (auto&& shape : piece()) {
             place(shape);
+            if (m_depth == 0) {
+                ++m_shape_index;
+            }
         }
     }
 
@@ -62,6 +72,15 @@ class Solver {
         for (std::size_t y = 0; y < max_row; ++y) {
             for (std::size_t x = 0; x < max_col; ++x) {
                 place(shape, {y, x});
+                if constexpr (config_show_progress) {
+                    if (m_depth == 0) {
+                        std::cerr << "[" << m_shape_index + 1 << "/";
+                        std::cerr << piece().size() << "] ";
+                        std::cerr << "(" << y + 1 << ", " << x + 1 << ") ";
+                        std::cerr << "[" << y * max_col + x + 1 << "/";
+                        std::cerr << max_row * max_col << "]\n";
+                    }
+                }
             }
         }
     }
@@ -73,7 +92,9 @@ class Solver {
         }
 
         ++m_it;
+        ++m_depth;
         place_next();
+        --m_depth;
         --m_it;
         m_board.place(Category::none, shape, loc);
     }

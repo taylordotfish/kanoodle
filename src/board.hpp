@@ -103,12 +103,12 @@ class Board {
         for (std::size_t y = 0; y < dim.row(); ++y) {
             for (std::size_t x = 0; x < dim.col(); ++x) {
                 auto&& category = self.get({y, x});
-                if constexpr (use_color) {
+                if constexpr (config_use_color) {
                     stream << get_category_color(category);
                 }
                 stream << get_category_color(category) << category;
             }
-            if constexpr (use_color) {
+            if constexpr (config_use_color) {
                 stream << ansi_reset << "\n";
             }
         }

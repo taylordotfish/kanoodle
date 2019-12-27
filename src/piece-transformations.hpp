@@ -35,6 +35,10 @@ class PieceTransformations {
         return m_shapes.end();
     }
 
+    std::size_t size() const {
+        return m_shapes.size();
+    }
+
     private:
     Category m_category = Category::none;
     std::set<TransformedShape> m_shapes;

@@ -71,7 +71,7 @@ inline std::string get_category_color(Category category) {
 
 inline std::ostream& operator<<(std::ostream& stream, Category self) {
     if (self == Category::none) {
-        if constexpr (use_unicode) {
+        if constexpr (config_use_unicode) {
             stream << "·";
         } else {
             stream << ".";
