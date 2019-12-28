@@ -106,7 +106,7 @@ class Board {
                 if constexpr (config_use_color) {
                     stream << get_category_color(category);
                 }
-                stream << get_category_color(category) << category;
+                stream << category;
             }
             if constexpr (config_use_color) {
                 stream << ansi_reset << "\n";
