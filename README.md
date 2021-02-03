@@ -16,4 +16,4 @@ License
 -------
 
 kanoodle-solver is licensed under version 3 or later of the GNU Affero General
-Public License. See `LICENSE`.
+Public License. See [LICENSE](LICENSE).
