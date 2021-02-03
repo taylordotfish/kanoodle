@@ -4,6 +4,8 @@ kanoodle-solver
 **kanoodle-solver** is a solver for the puzzle game [Kanoodle]. It is not
 official or affiliated with Kanoodle in any way.
 
+[Kanoodle]: https://www.educationalinsights.com/kanoodle
+
 Example
 -------
 
