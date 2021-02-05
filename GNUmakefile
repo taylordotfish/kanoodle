@@ -1,4 +1,4 @@
-# Copyright (C) 2019 taylor.fish <contact@taylor.fish>
+# Copyright (C) 2018 taylor.fish <contact@taylor.fish>
 #
 # This file is part of kanoodle-solver.
 #
