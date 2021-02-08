@@ -14,6 +14,8 @@ make
 ./build/solver < example-board
 ```
 
+![example screenshot](misc/screenshot.png)
+
 License
 -------
 
